@@ -120,6 +120,7 @@ module DiscoursePostEvent
         :include_expired,
         :limit,
         :before,
+        :include_start_end_times
       )
     end
   end

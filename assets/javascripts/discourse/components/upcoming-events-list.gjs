@@ -117,6 +117,13 @@ export default class UpcomingEventsList extends Component {
   }
 
   @action
+  formatDateRange({ starts_at, ends_at }) {
+    const startDate = moment(starts_at).format("LLL");
+    const endDate = ends_at ? moment(ends_at).format("LLL") : null;
+    return endDate ? `${startDate} - ${endDate}` : startDate;
+  }
+
+  @action
   startsAtMonth(month, day) {
     return moment(`${month}-${day}`).format("MMM");
   }
@@ -200,6 +207,9 @@ export default class UpcomingEventsList extends Component {
                           {{this.formatTime event}}
                         </span>
                       {{/if}}
+                      <span class="upcoming-events-list__event-date-range">
+                        {{this.formatDateRange event}}
+                      </span>
                     </div>
                   </a>
                 {{/each}}
